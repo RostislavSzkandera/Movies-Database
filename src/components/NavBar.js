@@ -50,7 +50,7 @@ const NavBar = () => {
                                 <li className="border-b border-white w-full text-center mx-auto pb-2"><Link onClick={menuHandler} className="cursor-pointer"  to="/movielist">Upravit seznam</Link></li>
                                 <li className="border-b border-white w-full text-center mx-auto pb-2"><Link onClick={menuHandler} className="cursor-pointer"  to="/addmovie">Přidání filmu</Link></li>
                                 <li className="border-b border-white w-full text-center mx-auto pb-2"><button  className="cursor-pointer uppercase" onClick={ () => {
-                                    logOut()
+                                    logout()
                                     menuHandler()
                                     navigate("/")
                                     }} >Odhlásit se</button></li> 
@@ -64,7 +64,7 @@ const NavBar = () => {
                                 <li><Link className="mr-4 mt-2 p-2 font-bold  bg-red-700 rounded-xl hover:bg-red-600"  to="/movielist">Upravit seznam</Link></li>
                                 <li><Link className="mr-4 mt-2 p-2 font-bold bg-red-700 rounded-xl hover:bg-red-600" to="/addmovie">Přidání filmu</Link></li>
                                 <li><button className="mr-4 mt-2 p-2 font-bold bg-red-700 rounded-xl hover:bg-red-600" to="/signout" onClick={ () => {
-                                    logOut()
+                                    logout()
                                     navigate("/")
                                     }} >Odhlásit se</button></li>
                             </ul>

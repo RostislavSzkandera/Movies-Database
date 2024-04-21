@@ -16,11 +16,11 @@ const ResetPasswordForm = ({ open , setOpen }) => {
 // Funkce pro změnu hesla 
     const handleSubmit = (e) => {
         e.preventDefault()
-        resetPassword(email).then( (data => {
+        resetPassword(email).then((data => {
             alert("Podívejte se do e-mailu.")
             setEmail("")
             setOpen(!open)
-        })). catch (err => {
+        })).catch (err => {
             alert("Něco se nepovedlo")
         })
     }
