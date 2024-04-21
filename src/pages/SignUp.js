@@ -9,9 +9,10 @@ const SignUp = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword ] = useState("")
     
-// destructuring context
+// Destructuring context
     const { signUp } = MyContext()
-    
+
+// Použití useNavigate
     const navigate = useNavigate()
 
 // Odeslání registračního formuláře

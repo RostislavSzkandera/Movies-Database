@@ -6,10 +6,10 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose } from "react-icons/ai";
 
 const NavBar = () => {
-// useState pro zobrazení mobilního menu
+// UseState pro zobrazení mobilního menu
     const [showNav, setShowNav] = useState(true)
   
-// destructuring context
+// Destructuring context
     const { user } = MyContext()
 
 // Funkce pro otevření mobilního menu
