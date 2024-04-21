@@ -2,14 +2,16 @@ import {  useEffect, useState } from "react"
 import { db } from "../firebase/config"
 import { collection, onSnapshot } from "firebase/firestore"
 import ClipLoader from "react-spinners/ClipLoader";
-
-
+import { MyContext } from "../context/Context";
+import ModalComponent from "../components/ModalComponent"
 
 const Home = () => {
   
   const [movies, setMovies] = useState([])
   const [loading, setLoading] = useState(false)
   
+// Destructuring context
+  const { Modal, showModal } = MyContext()
 
 // Funkce pro načtení dat z databáze
   useEffect( () => {
@@ -51,6 +53,7 @@ const Home = () => {
   
 return (
     <div className="mb-20">
+      {showModal && <ModalComponent text="Úspěšně odhlášeno" />}
      <div className=" flex flex-col flex-nowrap sm:flex sm:flex-row m-4 sm:flex-wrap ">
         { movies && movies.map( (oneMovie) => {
           const { title,  id, img } = oneMovie 

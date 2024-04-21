@@ -5,12 +5,14 @@ import { Link, useNavigate } from "react-router-dom"
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose } from "react-icons/ai";
 
+import ModalComponent from "./ModalComponent";
+
 const NavBar = () => {
 // UseState pro zobrazení mobilního menu
     const [showNav, setShowNav] = useState(true)
   
 // Destructuring context
-    const { user, logOut } = MyContext()
+    const { user, logOut, Modal } = MyContext()
 // Použití useNavigate
     const navigate = useNavigate()
 
@@ -52,6 +54,7 @@ const NavBar = () => {
                                 <li className="border-b border-white w-full text-center mx-auto pb-2"><button  className="cursor-pointer uppercase" onClick={ () => {
                                     logout()
                                     menuHandler()
+                                    Modal()
                                     navigate("/")
                                     }} >Odhlásit se</button></li> 
                             </ul>
@@ -65,6 +68,7 @@ const NavBar = () => {
                                 <li className="mt-2"><Link className="mr-4 p-2 font-bold bg-red-700 rounded-xl hover:bg-red-600" to="/addmovie">Přidání filmu</Link></li>
                                 <li className="mt-2"><button className="mr-4 p-2 font-bold bg-red-700 rounded-xl hover:bg-red-600" to="/signout" onClick={ () => {
                                     logout()
+                                    Modal()
                                     navigate("/")
                                     }} >Odhlásit se</button></li>
                             </ul>

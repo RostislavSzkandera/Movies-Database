@@ -10,7 +10,7 @@ const SignUp = () => {
     const [password, setPassword ] = useState("")
     
 // Destructuring context
-    const { signUp } = MyContext()
+    const { signUp, Modal } = MyContext()
 
 // Použití useNavigate
     const navigate = useNavigate()
@@ -60,6 +60,7 @@ const SignUp = () => {
           <input 
             className="bg-red-600 p-2 rounded cursor-pointer w-[200px] mt-8 hover:bg-red-500" 
             type="submit" 
+            onClick={Modal}
             value="Registrovat" 
           />
           

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import { collection, onSnapshot, deleteDoc, doc } from "firebase/firestore"
 import { MyContext } from "../context/Context"
 import ClipLoader from "react-spinners/ClipLoader";
+import ModalComponent from "../components/ModalComponent"
 
 
 
@@ -19,7 +20,7 @@ const EditMovies = () => {
 
 
 // Destructuring context
-  const { user } = MyContext()
+const { user, Modal, showModal } = MyContext()
   
 // Funkce pro smazání filmu 
   const handleDelete = async (id) => {
@@ -78,7 +79,7 @@ const EditMovies = () => {
 
   return (
     <div className="mb-20">
-      
+      { showModal && <ModalComponent text="Úspěšně přihlášeno" />}
       <form className="w-full text-center">
         <input 
           className="text-black w-[300px] p-1 my-2 rounded" 

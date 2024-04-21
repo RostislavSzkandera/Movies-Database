@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useNavigate, Link } from "react-router-dom"
 import { MyContext } from "../context/Context"
 import ResetPasswordForm from "../components/ResetPasswordForm"
+import ModalComponent from "../components/ModalComponent"
 
 
 
@@ -14,7 +15,7 @@ const Login = () => {
   const [error, setError] = useState("")
   
   // Destructuring context
-  const  { logIn , user, SignWithGoogle }  = MyContext()
+  const  { logIn , user, SignWithGoogle, Modal, showModal }  = MyContext()
   
   // Použití useNavigate
   const navigate = useNavigate()
@@ -76,6 +77,7 @@ const handleSubmit = async (e) => {
             <input 
               className="bg-red-600 p-2 rounded cursor-pointer w-[200px] mt-4 hover:bg-red-500" 
               type="submit" 
+              onClick={Modal}
               value="Přihlásit se" 
             />
             
@@ -84,7 +86,10 @@ const handleSubmit = async (e) => {
         <p onClick={ () => setOpen(!open)} className="mt-4 cursor-pointer hover:underline">Zapomněli jste heslo?</p>
         { open && <ResetPasswordForm open={open} setOpen={setOpen} />}
 
-        <button onClick={SignWithGoogle} className="bg-red-600 p-2 rounded cursor-pointer w-[200px] mt-12 hover:bg-red-500">Přihlásit přes Google</button>
+        <button onClick={ () => {
+          SignWithGoogle()
+          Modal()
+        }} className="bg-red-600 p-2 rounded cursor-pointer w-[200px] mt-12 hover:bg-red-500">Přihlásit přes Google</button>
           <p className="mt-4">Ještě nejsi registrovaný?</p>
           <Link to="/signup"> <span className="font-bold hover:underline">Registruj se zde</span></Link>
       </div>

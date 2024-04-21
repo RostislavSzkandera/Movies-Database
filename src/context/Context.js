@@ -21,10 +21,21 @@ const AllContext = createContext()
 export function AllContextProvider({children}) {
     const [user, setUser] = useState({})
     
+    const [showModal, setShowModal] = useState(false)
     
     const navigate = useNavigate()
     
    
+// Funkce 
+    const Modal = () => {
+        setShowModal(true)
+        setTimeout( () => {
+            setShowModal(false)
+        }, 5000)
+    }
+   
+
+
 // Funkce pro přihlášení přes Google
 
     const SignWithGoogle = async () => {
@@ -77,7 +88,7 @@ export function AllContextProvider({children}) {
     })
 
     return (
-        <AllContext.Provider value={ {signUp, logIn, logOut, user, SignWithGoogle, resetPassword}}>
+        <AllContext.Provider value={ {signUp, logIn, logOut, user, SignWithGoogle, resetPassword, showModal, setShowModal, Modal}}>
             {children}
         </AllContext.Provider>
     )
