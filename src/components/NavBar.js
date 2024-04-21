@@ -34,8 +34,8 @@ const NavBar = () => {
         {
             user?.email ? 
             
-                (<div className="lg:flex lg:flex-row justify-between">
-                    <div className="flex flex-row justify-between">
+                (<div className="lg:flex lg:flex-row justify-between items-center">
+                    <div className="flex flex-row justify-between w-full">
                         <p className="text-xl m-2">Přihlášen: <span className="text-yellow-400">{user?.email}</span></p>
 
                         <div className="m-2 lg:hidden z-50">
@@ -59,11 +59,11 @@ const NavBar = () => {
 
                         {/* PC MENU pro přihlášené  */}
                         <nav className="hidden lg:block">
-                            <ul className="flex flex-row">
-                                <li><Link className="mr-4 mt-2 p-2 font-bold  bg-red-700 rounded-xl hover:bg-red-600"  to="/help">Nápověda</Link></li>
-                                <li><Link className="mr-4 mt-2 p-2 font-bold  bg-red-700 rounded-xl hover:bg-red-600"  to="/movielist">Upravit seznam</Link></li>
-                                <li><Link className="mr-4 mt-2 p-2 font-bold bg-red-700 rounded-xl hover:bg-red-600" to="/addmovie">Přidání filmu</Link></li>
-                                <li><button className="mr-4 mt-2 p-2 font-bold bg-red-700 rounded-xl hover:bg-red-600" to="/signout" onClick={ () => {
+                            <ul className="flex flex-row justify-center items-center">
+                                <li className="mt-2"><Link className="mr-4 p-2 font-bold  bg-red-700 rounded-xl hover:bg-red-600"  to="/help">Nápověda</Link></li>
+                                <li className="mt-2"><Link className="mr-4 p-2 font-bold  bg-red-700 rounded-xl hover:bg-red-600"  to="/movielist">Upravit seznam</Link></li>
+                                <li className="mt-2"><Link className="mr-4 p-2 font-bold bg-red-700 rounded-xl hover:bg-red-600" to="/addmovie">Přidání filmu</Link></li>
+                                <li className="mt-2"><button className="mr-4 p-2 font-bold bg-red-700 rounded-xl hover:bg-red-600" to="/signout" onClick={ () => {
                                     logout()
                                     navigate("/")
                                     }} >Odhlásit se</button></li>
@@ -75,6 +75,7 @@ const NavBar = () => {
                 
                 (
                 <div className="flex flex-row justify-between ">
+                    
                     <div>
                         <p className="mt-2 ml-2 text-xl text-red-500">Nejsi přihlášen</p>
                     </div>
