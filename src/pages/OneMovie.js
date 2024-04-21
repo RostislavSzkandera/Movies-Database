@@ -32,7 +32,7 @@ const OneMovie = () => {
       if(window.confirm("Opravdu si přejete smazat tento film ??")){
         try {
             await deleteDoc((doc(db, "movies", id)))
-            setMovies(movies.filter( (movie) => movie.id !== id ))
+            navigate("/movielist")
         } catch (err)  {
             console.log(err)
             setDeleteNotif(true)
@@ -42,18 +42,23 @@ const OneMovie = () => {
 
       
   // Funkce pro zjištění, jestli aktuálně přihlášený uživatel přidal film
-    const checkAuthor =  () => {
-        if(!movies) {
-          return () => checkAuthor()
-        }
+
         
-          if(movies.addedBy === user?.email) {
-            setIsAddedByMe(true)}
-          }
-        
+  const checkAuthor =  () => {
+    if(!movies) {
+      return () => checkAuthor()
+    }
+    
+      if(movies.addedBy === user?.email) {
+        setIsAddedByMe(true)}
+        // console.log(movies.addedBy)
+      }
+  
      useEffect( () => {
-        checkAuthor()
+      
+      checkAuthor()
           
+      
       }, [movies])
 
   //Funkce pro načtení dat o jednom filmu 
@@ -67,9 +72,10 @@ const OneMovie = () => {
 
         }
         setLoading(false)
+        setIsAddedByMe(false)
     })
     return () => unsubscribe()
-  }, [])
+  }, [id])
   
 
 
