@@ -10,6 +10,7 @@ import EditMovies from "./pages/EditMovies"
 import OneMovie from "./pages/OneMovie"
 import Help from "./pages/Help"
 import Footer from "./components/Footer"
+import PrivateLayouts from "./layouts/PrivateLayouts"
 
 const App = () => {
   return (
@@ -21,8 +22,10 @@ const App = () => {
           <Route path="/help" element={ <Help />} />
           <Route path="/signup" element={ <SignUp />} />
           <Route path="/login" element={ <Login />} />
-          <Route path="/movielist" element={ <EditMovies />} />
-          <Route path="/addmovie" element={ <AddMovie />} />
+            <Route element={<PrivateLayouts />}>
+              <Route path="/movielist" element={ <EditMovies />} />
+              <Route path="/addmovie" element={ <AddMovie />} />
+            </Route>
           <Route path="/movielist/:id" element={ <OneMovie />} />
         </Routes>
         <Footer />
