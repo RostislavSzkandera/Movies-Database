@@ -67,7 +67,7 @@ const { user, Modal, showModal } = MyContext()
   },[])
 
 
-  console.log(error)
+
  
   
   if(loading) {
@@ -110,10 +110,10 @@ const { user, Modal, showModal } = MyContext()
         }).map( (oneMovie) => {
           const {title,  id,  img} = oneMovie 
             return <div className="flex flex-col justify-center items-center border-2 border-red-600 w-[290px] mx-auto my-2 sm:m-2 shadow-md shadow-red-600" key={id}>
-                      <h2 className="text-xl text-white ">{title}</h2>
+                      <h2 className="flex flex-row justify-center items-center h-12 text-xl text-center m-1 text-white ">{title}</h2>
                       <img className="w-[180px] h-[180px]  " src={img} alt="" />
-                      <div className="flex flex-row space-x-2">
-                        <Link to={`/movielist/${oneMovie.id}`} className="bg-red-700 p-1 rounded-xl hover:bg-red-600 my-1">Více informací</Link>
+                      <div className="flex flex-row space-x-2 ">
+                        <Link to={`/movielist/${oneMovie.id}`} className="bg-red-700 p-1 rounded-xl hover:bg-red-600  my-1">Více informací</Link>
                         <button onClick={ () => {handleDelete(id)}} className="bg-red-700 p-1 rounded-xl hover:bg-red-600 my-1">Smazat</button>
                       </div>
                     </div>
