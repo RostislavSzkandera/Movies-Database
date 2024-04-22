@@ -21,7 +21,7 @@ const SignUp = () => {
 // Odeslání registračního formuláře
     const handleSubmit = async (e) => {
         e.preventDefault()
-        
+        setError("")
           
           try {
               setErrors(validateValues(email, password));
@@ -31,8 +31,9 @@ const SignUp = () => {
               } 
            
            
-
-        } catch (error) {
+            }
+        catch (error) {
+            console.log(error)
             setError("Tato emailová adresa už je zaregistrovaná")
         }
 

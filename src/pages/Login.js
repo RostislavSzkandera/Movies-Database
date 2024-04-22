@@ -33,7 +33,7 @@ const Login = () => {
 
 const handleSubmit = async (e) => {
       e.preventDefault()
-
+      setError("")
       try {
         setErrors(validateValues(email, password));
         await logIn(email, password)
