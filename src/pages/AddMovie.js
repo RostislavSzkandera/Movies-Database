@@ -25,6 +25,8 @@ const AddMovie = () => {
   // useState pro přidání dat
     const [data, setData] = useState(initialState)
     const {title, year, genre, actors, time} = data
+
+    const [errors, setErrors] = useState({})
     
   // useState pro přidání obrázku
     const [file, setFile] = useState(null)
@@ -46,14 +48,18 @@ const AddMovie = () => {
   // Přidání filmu
     const handleSubmit = async (e) => {
       e.preventDefault()
+      setErrors(validateValues(year, time));
+      if(year.length < 5 && time.length < 4) {
         await addDoc(collection(db, "movies"), {
-            ...data,
-            addedBy: user?.email,
-            userid: auth?.currentUser?.uid,
-            timestamp: serverTimestamp(),
-        })
+          ...data,
+          addedBy: user?.email,
+          userid: auth?.currentUser?.uid,
+          timestamp: serverTimestamp(),
+      })
 
-            navigate("/movielist")
+          navigate("/movielist")
+      }
+       
     }
 
 // Funkce pro přidání obrázku
@@ -93,13 +99,40 @@ const AddMovie = () => {
 file && uploadFile()
   }, [file])
   
-    
+   
+
+  // Validační funkce formuláře
+const validateValues = (inputValues) => {
+  let errors = {};
+  if (year.length > 4) {
+    errors.year = "Rok musí mít pouze 4 čísla";
+  }
+  if (time.length > 3) {
+    errors.time = "Čas musí mít pouze 3 čísla";
+  }
+ 
+  return errors;
+};
+
   
   return (
     
     <div>
           <h2 className=" text-center text-2xl pt-8">Přidání filmu</h2>
       <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center pt-40">
+              
+              {errors.year ? (
+              <p className="text-red-500 text-center mb-2">
+                  {errors.year}
+              </p>
+            ) : null}
+            {errors.time ? (
+              <p className="text-red-500 text-center mb-2">
+                  {errors.time}
+              </p>
+            ) : null}
+            
+          
           <label htmlFor="photo">Obrázek filmu</label>
           <input 
             id="photo"
@@ -118,6 +151,7 @@ file && uploadFile()
             name="title"
             autoFocus
             autoComplete="off"
+            maxLength={40}
             
         />
         <input 
@@ -130,6 +164,7 @@ file && uploadFile()
             name="year"
             autoComplete="off"
             
+        
             
         />
         <input 
@@ -165,6 +200,7 @@ file && uploadFile()
             required
             name="actors"
             autoComplete="off"
+            maxLength={80}
             
             
         />

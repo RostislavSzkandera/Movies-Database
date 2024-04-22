@@ -1,4 +1,5 @@
 import {  useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 import { db } from "../firebase/config"
 import { collection, onSnapshot } from "firebase/firestore"
 import ClipLoader from "react-spinners/ClipLoader";
@@ -9,6 +10,7 @@ const Home = () => {
   
   const [movies, setMovies] = useState([])
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(false)
   
 // Destructuring context
   const { Modal, showModal } = MyContext()
@@ -19,16 +21,21 @@ const Home = () => {
     const unsub = onSnapshot(
       collection(db, "movies"),
       (snapshot) => {
-        let list = []
-        snapshot.docs.forEach( (doc) => {
-          list.push({id: doc.id, ...doc.data()})
-
-        })
-        setMovies(list)
-        setLoading(false)
+        if(snapshot.empty){
+          setError(true)
+          setLoading(false)
+        } else {
+          let list = []
+            snapshot.docs.forEach( (doc) => {
+            list.push({id: doc.id, ...doc.data()})
+  
+          })
+          setMovies(list)
+          setLoading(false)
+        }
       },
-      (error) => {
-        console.log(error)
+      (err) => {
+        console.log(err)
       }
     )
     return () => {
@@ -54,6 +61,11 @@ const Home = () => {
 return (
     <div className="mb-20">
       {showModal && <ModalComponent text="Úspěšně odhlášeno" />}
+      { error &&  <div className="text-xl text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                      <p className="mb-2" >V databázi nejsou žádné filmy, musíš nějaký přidat.</p>
+                      <Link className="text-red-500 hover:underline" to="/login">Přihlásit se</Link>
+                  </div>
+      }
      <div className=" flex flex-col flex-nowrap sm:flex sm:flex-row m-4 sm:flex-wrap ">
         { movies && movies.map( (oneMovie) => {
           const { title,  id, img } = oneMovie 

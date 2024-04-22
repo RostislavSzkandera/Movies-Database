@@ -1,5 +1,5 @@
 import { MyContext } from "../context/Context"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useNavigate, Link } from "react-router-dom"
 
 
@@ -8,6 +8,9 @@ import { useNavigate, Link } from "react-router-dom"
 const SignUp = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword ] = useState("")
+    const [errors, setErrors] = useState({});
+    const [error, setError] = useState("")
+    
     
 // Destructuring context
     const { signUp, Modal } = MyContext()
@@ -18,16 +21,40 @@ const SignUp = () => {
 // Odeslání registračního formuláře
     const handleSubmit = async (e) => {
         e.preventDefault()
-
+        
+          
           try {
-              await signUp(email, password)
-              navigate("/movielist")
+              setErrors(validateValues(email, password));
+              if(email.length > 11 && password.length > 5 ) {
+                await signUp(email, password)
+                navigate("/movielist")
+              } 
+           
+           
 
-          } catch (error) {
-              console.log(error)
-          }
+        } catch (error) {
+            setError("Tato emailová adresa už je zaregistrovaná")
+        }
+
+        
 
     }
+
+// Validační funkce formuláře
+const validateValues = (inputValues) => {
+  let errors = {};
+  if (email.length < 12) {
+    errors.email = "Email je příliš krátký";
+  }
+  if (password.length < 6) {
+    errors.password = "Heslo je příliš krátké, musíte vyplnit alespoň 6 znaků";
+  }
+ 
+  return errors;
+};
+
+
+
 
 
   return (
@@ -36,6 +63,20 @@ const SignUp = () => {
       <div className="w-[500px] h-[500px] flex flex-col justify-center items-center bg-gray-800">
         <h2 className="text-2xl mb-4">Registrace</h2>
         <form  onSubmit={handleSubmit} className="flex flex-col justify-center items-center w-[300px]">
+          
+          {/* Validace formuláře, vypisování chyb */}
+              {error && <p className="text-red-500 text-center mb-2">{error}</p>}
+              {errors.email ? (
+              <p className="text-red-500 text-center mb-2">
+                  {errors.email}
+              </p>
+            ) : null}
+            {errors.password ? (
+              <p className="text-red-500 text-center">
+                  {errors.password}
+              </p>
+            ) : null}
+          
           <label htmlFor="name">Jméno</label>
           <input 
             autoComplete="off" 
@@ -44,6 +85,7 @@ const SignUp = () => {
             type="email" placeholder="Email"   
             onChange={ (e) => setEmail(e.target.value)} 
             required
+            value={email}
           />
           
           <label htmlFor="password">Heslo</label>
@@ -55,6 +97,7 @@ const SignUp = () => {
             placeholder="Heslo"  
             onChange={ (e) => setPassword(e.target.value)} 
             required 
+            value={password}
           />
           
           <input 

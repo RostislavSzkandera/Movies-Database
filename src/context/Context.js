@@ -26,7 +26,7 @@ export function AllContextProvider({children}) {
     const navigate = useNavigate()
     
    
-// Funkce 
+// Funkce pro otevírání a následné zavření notifikace
     const Modal = () => {
         setShowModal(true)
         setTimeout( () => {

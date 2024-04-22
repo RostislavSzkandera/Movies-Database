@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useNavigate, Link } from "react-router-dom"
 import { MyContext } from "../context/Context"
 import ResetPasswordForm from "../components/ResetPasswordForm"
-import ModalComponent from "../components/ModalComponent"
+
 
 
 
@@ -13,9 +13,10 @@ const Login = () => {
   const [email, setEmail ] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
+  const [errors, setErrors] = useState({});
   
   // Destructuring context
-  const  { logIn , user, SignWithGoogle, Modal, showModal }  = MyContext()
+  const  { logIn , user, SignWithGoogle, Modal  }  = MyContext()
   
   // Použití useNavigate
   const navigate = useNavigate()
@@ -33,10 +34,8 @@ const Login = () => {
 const handleSubmit = async (e) => {
       e.preventDefault()
 
-      setError("")
-
-
       try {
+        setErrors(validateValues(email, password));
         await logIn(email, password)
         navigate("/movielist")
       } catch(error) {
@@ -45,7 +44,19 @@ const handleSubmit = async (e) => {
     }
 
 
-    
+// Validační funkce formuláře
+    const validateValues = (inputValues) => {
+      let errors = {};
+      if (email.length < 12) {
+        errors.email = "Email je příliš krátký";
+      }
+      if (password.length < 6) {
+        errors.password = "Heslo je příliš krátké, musíte vyplnit alespoň 6 znaků";
+      }
+     
+      return errors;
+    };
+
 
   
   return  (
@@ -53,7 +64,20 @@ const handleSubmit = async (e) => {
       <div className="w-[500px] min-h-[600px] flex flex-col justify-center items-center bg-gray-800 ">
         <h2 className="text-2xl mb-4">Přihlášení</h2>
         <form className="flex flex-col justify-center items-center w-[300px]" onSubmit={handleSubmit}>
-            {error && <p className="p-1 text-red-500 text-xl">{error}</p>}
+             
+              {/* Validace formuláře, vypisování chyb */}
+              {error && <p className="text-red-500 text-center mb-2">{error}</p>}
+              {errors.email ? (
+              <p className="text-red-500 text-center mb-2">
+                  {errors.email}
+              </p>
+            ) : null}
+            {errors.password ? (
+              <p className="text-red-500 text-center">
+                  {errors.password}
+              </p>
+            ) : null}
+            
             <label htmlFor="name">Jméno</label>
             <input 
               autoComplete="off" 
@@ -63,6 +87,7 @@ const handleSubmit = async (e) => {
               placeholder="Email"   
               onChange={ (e) => setEmail(e.target.value)} 
               required
+              value={email}
             />
             <label htmlFor="password">Heslo</label>
             <input 
@@ -73,7 +98,9 @@ const handleSubmit = async (e) => {
               placeholder="Heslo"  
               onChange={ (e) => setPassword(e.target.value)} 
               required 
+              value={password}
             />
+            
             <input 
               className="bg-red-600 p-2 rounded cursor-pointer w-[200px] mt-4 hover:bg-red-500" 
               type="submit" 
