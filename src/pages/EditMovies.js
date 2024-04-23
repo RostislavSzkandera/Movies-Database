@@ -113,8 +113,8 @@ const { user, Modal, showModal } = MyContext()
                       <h2 className="flex flex-row justify-center items-center h-12 text-xl text-center m-1 text-white ">{title}</h2>
                       <img className="w-[180px] h-[180px]  " src={img} alt="" />
                       <div className="flex flex-row space-x-2 ">
-                        <Link to={`/movielist/${oneMovie.id}`} className="bg-red-700 p-1 rounded-xl hover:bg-red-600  my-1">Více informací</Link>
-                        <button onClick={ () => {handleDelete(id)}} className="bg-red-700 p-1 rounded-xl hover:bg-red-600 my-1">Smazat</button>
+                        <Link to={`/movielist/${oneMovie.id}`} className="bg-red-700 p-1 rounded-xl sm:hover:bg-red-600  my-1">Více informací</Link>
+                        <button onClick={ () => {handleDelete(id)}} className="bg-red-700 p-1 rounded-xl sm:hover:bg-red-600 my-1">Smazat</button>
                       </div>
                     </div>
         })}

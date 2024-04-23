@@ -1,5 +1,5 @@
 import { MyContext } from "../context/Context"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { useNavigate, Link } from "react-router-dom"
 
 
@@ -60,8 +60,8 @@ const validateValues = (inputValues) => {
 
   return (
     
-    <div className="w-full h-[700px] flex flex-col justify-center items-center">
-      <div className="w-[500px] h-[500px] flex flex-col justify-center items-center bg-gray-800">
+    <div className="w-full h-[700px] flex flex-col justify-center items-center pt-20">
+      <div className="w-[300px] sm:w-[500px] h-[500px] flex flex-col justify-center items-center bg-gray-800">
         <h2 className="text-2xl mb-4">Registrace</h2>
         <form  onSubmit={handleSubmit} className="flex flex-col justify-center items-center w-[300px]">
           
@@ -102,7 +102,7 @@ const validateValues = (inputValues) => {
           />
           
           <input 
-            className="bg-red-600 p-2 rounded cursor-pointer w-[200px] mt-8 hover:bg-red-500" 
+            className="bg-red-600 p-2 rounded cursor-pointer w-[200px] mt-8 sm:hover:bg-red-500" 
             type="submit" 
             onClick={Modal}
             value="Registrovat" 
@@ -111,7 +111,7 @@ const validateValues = (inputValues) => {
         </form>
         
           <p className="mt-4">Už jsi registrovaný?</p>
-          <Link to="/login"> <span className="font-bold hover:underline">Přihlaš se zde</span></Link>
+          <Link to="/login"> <span className="font-bold sm:hover:underline">Přihlaš se zde</span></Link>
       </div>
     </div>
   )

@@ -60,8 +60,8 @@ const handleSubmit = async (e) => {
 
   
   return  (
-    <div className="w-full min-h-[700px] flex flex-col justify-center items-center">
-      <div className="w-[500px] min-h-[600px] flex flex-col justify-center items-center bg-gray-800 ">
+    <div className="w-full min-h-[700px] flex flex-col justify-center items-center pt-24">
+      <div className="w-[300px] sm:w-[500px] min-h-[600px] flex flex-col justify-center items-center bg-gray-800 ">
         <h2 className="text-2xl mb-4">Přihlášení</h2>
         <form className="flex flex-col justify-center items-center w-[300px]" onSubmit={handleSubmit}>
              
@@ -102,7 +102,7 @@ const handleSubmit = async (e) => {
             />
             
             <input 
-              className="bg-red-600 p-2 rounded cursor-pointer w-[200px] mt-4 hover:bg-red-500" 
+              className="bg-red-600 p-2 rounded cursor-pointer w-[200px] mt-4 sm:hover:bg-red-500" 
               type="submit" 
               onClick={Modal}
               value="Přihlásit se" 
@@ -110,15 +110,15 @@ const handleSubmit = async (e) => {
             
         </form>
         
-        <p onClick={ () => setOpen(!open)} className="mt-4 cursor-pointer hover:underline">Zapomněli jste heslo?</p>
+        <p onClick={ () => setOpen(!open)} className="mt-4 cursor-pointer sm:hover:underline">Zapomněli jste heslo?</p>
         { open && <ResetPasswordForm open={open} setOpen={setOpen} />}
 
         <button onClick={ () => {
           SignWithGoogle()
           Modal()
-        }} className="bg-red-600 p-2 rounded cursor-pointer w-[200px] mt-12 hover:bg-red-500">Přihlásit přes Google</button>
+        }} className="bg-red-600 p-2 rounded cursor-pointer w-[200px] mt-12 sm:hover:bg-red-500">Přihlásit přes Google</button>
           <p className="mt-4">Ještě nejsi registrovaný?</p>
-          <Link to="/signup"> <span className="font-bold hover:underline">Registruj se zde</span></Link>
+          <Link to="/signup"> <span className="font-bold sm:hover:underline">Registruj se zde</span></Link>
       </div>
     </div>
   )

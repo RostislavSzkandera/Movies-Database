@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose } from "react-icons/ai";
 
-import ModalComponent from "./ModalComponent";
+
 
 const NavBar = () => {
 // UseState pro zobrazení mobilního menu
@@ -38,7 +38,7 @@ const NavBar = () => {
             
                 (<div className="lg:flex lg:flex-row justify-between items-center">
                     <div className="flex flex-row justify-between w-full">
-                        <p className="text-xl m-2">Přihlášen: <span className="text-yellow-400">{user?.email}</span></p>
+                        <p className="flex flex-col sm:flex-row text-xl sm:mx-2 mx-2">Přihlášen: <span className="text-yellow-400 mx-0 sm:mx-1">{user?.email}</span></p>
 
                         <div className="m-2 lg:hidden z-50">
                             {showNav? <GiHamburgerMenu size={30} onClick={menuHandler} /> : <AiOutlineClose size={30} onClick={menuHandler} /> }

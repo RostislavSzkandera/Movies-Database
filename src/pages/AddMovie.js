@@ -55,6 +55,8 @@ const AddMovie = () => {
           addedBy: user?.email,
           userid: auth?.currentUser?.uid,
           timestamp: serverTimestamp(),
+      }).catch (err => {
+        console.log(err)
       })
 
           navigate("/movielist")
@@ -138,13 +140,13 @@ const validateValues = (inputValues) => {
             id="photo"
             type="file"
             onChange={ (e) => setFile(e.target.files[0])} 
-            className="bg-white text-black w-[300px] sm:w-[500px] mb-4 p-2"
+            className="bg-white text-black w-[300px] sm:w-[500px] mb-4 p-2 placeholder:text-black"
             required
         />
         <input 
             type="text" 
             placeholder="Název filmu"
-            className="bg-white text-black w-[300px] sm:w-[500px] mb-4 p-2"
+            className="bg-white text-black w-[300px] sm:w-[500px] mb-4 p-2 placeholder:text-black"
             onChange={handleChange}
             value={title}
             required
@@ -157,7 +159,7 @@ const validateValues = (inputValues) => {
         <input 
             type="number" 
             placeholder="Rok natočení"
-            className="bg-white text-black w-[300px] sm:w-[500px] mb-4 p-2"
+            className="bg-white text-black w-[300px] sm:w-[500px] mb-4 p-2 placeholder:text-black"
             onChange={handleChange}
             value={year}
             required
@@ -170,7 +172,7 @@ const validateValues = (inputValues) => {
         <input 
             type="number" 
             placeholder="Délka filmu v minutách"
-            className="bg-white text-black w-[300px] sm:w-[500px] mb-4 p-2"
+            className="bg-white text-black w-[300px] sm:w-[500px] mb-4 p-2 placeholder:text-black"
             onChange={handleChange}
             value={time}
             required
@@ -179,10 +181,11 @@ const validateValues = (inputValues) => {
             
             
         />
+        
         <input 
             type="text" 
             placeholder="Žánr"
-            className="bg-white text-black w-[300px] sm:w-[500px] mb-4 p-2"
+            className="bg-white text-black w-[300px] sm:w-[500px] mb-4 p-2 placeholder:text-black"
             onChange={handleChange}
             value={genre}
             required
@@ -190,11 +193,12 @@ const validateValues = (inputValues) => {
             autoComplete="off"
             
         />
+
         
         <input 
             type="text" 
             placeholder="Hlavní herci"
-            className="bg-white text-black w-[300px] sm:w-[500px] mb-4 p-2"
+            className="bg-white text-black w-[300px] sm:w-[500px] mb-4 p-2 placeholder:text-black"
             onChange={handleChange}
             value={actors}
             required
@@ -208,7 +212,7 @@ const validateValues = (inputValues) => {
             type="submit"
             value="Přidat film"
             disabled={progress !== null && progress < 100}
-            className={progress? "bg-red-700 p-2 hover:bg-red-600 cursor-pointer rounded-xl" : "bg-gray-700 p-2 hover:bg-red-600 cursor-pointer rounded-xl"} 
+            className={progress? "bg-red-700 p-2 sm:hover:bg-red-600 cursor-pointer rounded-xl" : "bg-gray-700 p-2 hover:bg-red-600 cursor-pointer rounded-xl"} 
         />
       </form> 
         
