@@ -101,7 +101,7 @@ const { user, Modal, showModal } = MyContext()
                       <Link className="text-red-500 hover:underline" to="/addmovie">Přidat film</Link>
                   </div>
       }
-      { deleteNotif && <div className="w-[500px] h-[200px] flex flex-col justify-center items-center text-center absolute m-auto top-0 bottom-0 right-0 left-0 bg-red-500 "><h2 className="text-2xl">Nemáte oprávnění mazat filmy, které jste nepřidali Vy!</h2>
+      { deleteNotif && <div className="w-[300px] sm:w-[500px] h-[200px] flex flex-col justify-center items-center text-center absolute m-auto top-0 bottom-0 right-0 left-0 bg-red-500 p-2 "><h2 className="text-2xl">Nemáte oprávnění mazat filmy, které jste nepřidali Vy!</h2>
       <button onClick={ () => setDeleteNotif(false)}  className="bg-black p-2 mt-4 rounded">Ok</button></div>}
       
       <div className="flex flex-col flex-nowrap sm:flex sm:flex-row m-4 sm:flex-wrap">

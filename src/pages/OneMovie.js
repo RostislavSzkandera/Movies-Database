@@ -97,7 +97,7 @@ if(loading) {
       
       <section className="bg-black flex flex-col justify-center items-center pt-4 sm:pt-40" >
         
-          { deleteNotif && <div className="flex flex-col justify-center items-center text-center absolute m-auto top-0 bottom-0 right-0 left-0 bg-black  w-[450px] h-[200px]"><h2 className="text-2xl">Nemáte oprávnění mazat filmy, které jste nepřidali Vy!</h2>
+          { deleteNotif && <div className="flex flex-col justify-center items-center text-center absolute m-auto top-0 bottom-0 right-0 left-0 bg-black w-[250px] sm:w-[450px] h-[200px] p-2"><h2 className="text-2xl">Nemáte oprávnění mazat filmy, které jste nepřidali Vy!</h2>
           <button onClick={ () => setDeleteNotif(false)}  className="bg-red-500 p-2 mt-4 rounded">Ok</button></div>}
           {
           movies && <div className={isAddedByMe ? "bg-yellow-500 flex flex-col justify-center items-center w-[350px] sm:w-[500px]" : "bg-red-500  flex flex-col justify-center items-center  w-[350px] sm:w-[500px]"}>

@@ -120,8 +120,8 @@ const validateValues = (inputValues) => {
   return (
     
     <div>
-          <h2 className=" text-center text-2xl pt-8">Přidání filmu</h2>
-      <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center pt-40">
+          <h2 className="text-center text-2xl pt-8 sm:pt-28">Přidání filmu</h2>
+      <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center pt-8 ">
               
               {errors.year ? (
               <p className="text-red-500 text-center mb-2">
@@ -140,7 +140,7 @@ const validateValues = (inputValues) => {
             id="photo"
             type="file"
             onChange={ (e) => setFile(e.target.files[0])} 
-            className="bg-white text-black w-[300px] sm:w-[500px] mb-4 p-2 placeholder:text-black"
+            className="bg-white text-black w-[300px] sm:w-[500px] mb-4 p-2 placeholder:text-black mt-2"
             required
         />
         <input 
@@ -213,7 +213,7 @@ const validateValues = (inputValues) => {
             type="submit"
             value="Přidat film"
             disabled={progress !== null && progress < 100}
-            className={progress? "bg-red-700 p-2 sm:hover:bg-red-600 cursor-pointer rounded-xl" : "bg-gray-700 p-2 hover:bg-red-600 cursor-pointer rounded-xl"} 
+            className={progress? "bg-red-700 p-2 sm:hover:bg-red-600 cursor-pointer rounded-xl" : "bg-gray-700 p-2 sm:hover:bg-red-600 cursor-pointer rounded-xl"} 
         />
       </form> 
         
