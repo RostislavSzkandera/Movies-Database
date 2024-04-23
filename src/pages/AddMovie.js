@@ -49,7 +49,7 @@ const AddMovie = () => {
     const handleSubmit = async (e) => {
       e.preventDefault()
       setErrors(validateValues(year, time));
-      if(year.length < 5 && time.length < 4) {
+      if(year.length === 4 && time.length < 4) {
         await addDoc(collection(db, "movies"), {
           ...data,
           addedBy: user?.email,
@@ -106,11 +106,11 @@ file && uploadFile()
   // Validační funkce formuláře
 const validateValues = (inputValues) => {
   let errors = {};
-  if (year.length > 4) {
-    errors.year = "Rok musí mít pouze 4 čísla";
+  if (year.length !== 4 ) {
+    errors.year = "Rok musí mít 4 čísla";
   }
   if (time.length > 3) {
-    errors.time = "Čas musí mít pouze 3 čísla";
+    errors.time = "Čas musí mít maximálně 3 čísla (v minutách)";
   }
  
   return errors;
@@ -166,6 +166,7 @@ const validateValues = (inputValues) => {
             name="year"
             autoComplete="off"
             
+            
         
             
         />
@@ -178,6 +179,7 @@ const validateValues = (inputValues) => {
             required
             name="time"
             autoComplete="off"
+            
             
             
         />
@@ -206,7 +208,7 @@ const validateValues = (inputValues) => {
             name="actors"
             autoComplete="off"
             maxLength={80}
-            
+            minLength={5}
             
         />
         <input 
