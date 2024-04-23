@@ -133,7 +133,7 @@ const validateValues = (inputValues) => {
             ) : null}
             
           
-          <label htmlFor="photo">Obrázek filmu</label>
+          <label htmlFor="photo">Vložte obrázek</label>
           <input 
             id="photo"
             type="file"
