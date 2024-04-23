@@ -182,17 +182,18 @@ const validateValues = (inputValues) => {
             
         />
         
-        <input 
-            type="text" 
-            placeholder="Žánr"
-            className="bg-white text-black w-[300px] sm:w-[500px] mb-4 p-2 placeholder:text-black"
-            onChange={handleChange}
-            value={genre}
-            required
-            name="genre"
-            autoComplete="off"
-            
-        />
+        <select className="bg-white text-black w-[300px] sm:w-[500px] mb-4 p-2" required name="genre" value={genre} onChange={handleChange}>
+                    <option disabled value="">--Vyberte žánr--</option>
+                    <option value="Komedie">Komedie</option>
+                    <option value="Akční">Akční</option>
+                    <option value="Fantasy">Fantasy</option>
+                    <option value="Horor">Horor</option>
+                    <option value="Sci-fi">Sci-fi</option>
+                    <option value="Thriller">Thriller</option>
+                    <option value="Animovaný">Animovaný</option>
+                    <option value="Romantický">Romantický</option>
+        </select>
+
 
         
         <input 
