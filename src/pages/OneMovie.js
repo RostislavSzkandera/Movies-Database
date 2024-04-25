@@ -103,11 +103,11 @@ if(loading) {
           movies && <div className={isAddedByMe ? "bg-yellow-500 flex flex-col justify-center items-center w-[350px] sm:w-[500px]" : "bg-red-500  flex flex-col justify-center items-center  w-[350px] sm:w-[500px]"}>
                       <h2 className="text-center text-2xl m-2">{movies.title}</h2>
                       <img className="w-[200px] mb-1" src={movies.img} alt="" />
-                      <p className="mb-2">Hlavní herci: {movies.actors}</p>
+                      <p className="mx-2 mb-2 text-center">Hlavní herci: {movies.actors}</p>
                       <p className="mb-2">Rok natočení: {movies.year}</p>
                       <p className="mb-2">Žánr: {movies.genre}</p>
                       <p className="mb-2">Délka filmu: {movies.time} minut</p>
-                      <p className="mb-2">Přidal: {movies.addedBy}</p>
+                      <p className="mx-2 mb-2 text-center">Přidal: {movies.addedBy}</p>
                       <div className="flex flex-row space-x-2 my-2">
                         <Link className="bg-black p-2 rounded mb-2 sm:hover:bg-gray-600" to="/movielist">Zpět</Link>
                         <button className="bg-black p-2 rounded mb-2 sm:hover:bg-gray-600" onClick={ () => {handleDelete(id)}}>Smazat</button>
