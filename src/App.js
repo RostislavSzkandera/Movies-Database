@@ -10,6 +10,7 @@ import EditMovies from "./pages/EditMovies"
 import OneMovie from "./pages/OneMovie"
 import Help from "./pages/Help"
 import Footer from "./components/Footer"
+import PageNotFound from "./pages/PageNotFound"
 import PrivateLayouts from "./layouts/PrivateLayouts"
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
               <Route path="/addmovie" element={ <AddMovie />} />
             </Route>
           <Route path="/movielist/:id" element={ <OneMovie />} />
+          <Route path="*" element={ <PageNotFound />} />
         </Routes>
         <Footer />
       </AllContextProvider>
