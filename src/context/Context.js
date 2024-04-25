@@ -21,10 +21,14 @@ const AllContext = createContext()
 export function AllContextProvider({children}) {
     const [user, setUser] = useState({})
     
+// useState pro zobrazení notifikace
     const [showModal, setShowModal] = useState(false)
-    
+// useState pro loading a error hlášku během přihlášení přes google
+    const [googleError, setGoogleError] = useState(false)
+    const [loading, setLoading] = useState(false)
+
     const navigate = useNavigate()
-    
+// useState pro zobrazení tlačítka pro scroll nahoru
     const [visible, setVisible] = useState(false)
     
    
@@ -65,15 +69,29 @@ export function AllContextProvider({children}) {
 // Funkce pro přihlášení přes Google
 
     const SignWithGoogle = async () => {
+        setLoading(true)
     const provider = new GoogleAuthProvider();
 
     signInWithPopup(auth, provider).then( (result) => {
+        
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         const user = result.user;
+        setLoading(false)
         navigate("/movielist")
     }).catch((error) => {
-        console.log(error)
+        // Handle Errors here.
+        setGoogleError(true)
+        
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+        setLoading(false)
       });
   }
 
@@ -114,7 +132,7 @@ export function AllContextProvider({children}) {
     })
 
     return (
-        <AllContext.Provider value={ {signUp, logIn, logOut, user, SignWithGoogle, resetPassword, showModal, setShowModal, Modal, visible, scrollToTop}}>
+        <AllContext.Provider value={ {signUp, logIn, logOut, user, SignWithGoogle, resetPassword, showModal, setShowModal, Modal, visible, scrollToTop, googleError, loading  }}>
             {children}
         </AllContext.Provider>
     )

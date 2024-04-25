@@ -122,7 +122,7 @@ const validateValues = (inputValues) => {
     <div>
           <h2 className="text-center text-2xl pt-8 sm:pt-28">Přidání filmu</h2>
       <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center pt-8 ">
-              
+              {/* Validace, vypisování chyb */}
               {errors.year ? (
               <p className="text-red-500 text-center mb-2">
                   {errors.year}

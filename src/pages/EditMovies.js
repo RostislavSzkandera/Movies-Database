@@ -110,7 +110,7 @@ const { user, Modal, showModal, visible, scrollToTop } = MyContext()
       
       <div className="flex flex-col flex-nowrap sm:flex sm:flex-row m-4 sm:flex-wrap">
         { movies && movies.filter((movie) => {
-          return search.toLowerCase() === "" ? movie : movie.title.toLowerCase().includes(search)
+          return search.toLowerCase() === "" ? movie : movie.title.toLowerCase().includes(search.toLowerCase())
         }).map( (oneMovie) => {
           const {title,  id,  img} = oneMovie 
             return <div className="flex flex-col justify-center items-center border-2 border-red-600 w-[290px] mx-auto my-2 sm:m-2 shadow-md shadow-red-600" key={id}>

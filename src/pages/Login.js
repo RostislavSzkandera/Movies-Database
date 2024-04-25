@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useNavigate, Link } from "react-router-dom"
 import { MyContext } from "../context/Context"
 import ResetPasswordForm from "../components/ResetPasswordForm"
+import ClipLoader from "react-spinners/ClipLoader";
 
 
 
@@ -16,7 +17,7 @@ const Login = () => {
   const [errors, setErrors] = useState({});
   
   // Destructuring context
-  const  { logIn , user, SignWithGoogle, Modal  }  = MyContext()
+  const  { logIn , user, SignWithGoogle, Modal, googleError, loading }  = MyContext()
   
   // Použití useNavigate
   const navigate = useNavigate()
@@ -57,15 +58,28 @@ const handleSubmit = async (e) => {
       return errors;
     };
 
+    if(loading) {
+      return    <div className="w-full h-screen flex flex-row justify-center items-center">
+                  <ClipLoader
+                    color="blue"
+                    size={150}
+                    aria-label="Loading Spinner"
+                    data-testid="loader"
+                  />
+                </div>
+    }
+    
+      
 
   
   return  (
-    <div className="w-full min-h-[700px] flex flex-col justify-center items-center pt-4 sm:pt-24">
+    <div className="w-full min-h-[700px] flex flex-col justify-center items-center pt-4 pb-4 mb-4 sm:pt-24">
       <div className="w-[300px] sm:w-[500px] min-h-[650px] flex flex-col justify-center items-center bg-gray-800 ">
         <h2 className="text-2xl mb-4">Přihlášení</h2>
         <form className="flex flex-col justify-center items-center w-[300px]" onSubmit={handleSubmit}>
              
               {/* Validace formuláře, vypisování chyb */}
+              { googleError && <p className="text-red-500 text-center mb-2">Něco se nepovedlo. Zkuste to prosím znovu</p>}
               {error && <p className="text-red-500 text-center mb-2">{error}</p>}
               {errors.email ? (
               <p className="text-red-500 text-center mb-2">
