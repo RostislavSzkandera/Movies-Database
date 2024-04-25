@@ -33,7 +33,7 @@ export function AllContextProvider({children}) {
         setShowModal(true)
         setTimeout( () => {
             setShowModal(false)
-        }, 5000)
+        }, 6000)
     }
    
 // Funkce pro scroll na začátek stránky
