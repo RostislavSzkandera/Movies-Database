@@ -46,7 +46,7 @@ const NavBar = () => {
 
                         {/* Mobilní MENU pro přihlášené */}
 
-                        <nav className={showNav? "fixed left-[-100%] w-[100%] h-[100%] ease-in-out duration-1000 z-20" : "bg-black border border-white fixed left-0 top-0 w-[100%] h-[100%] uppercase ease-in-out duration-1000 z-20  lg:hidden" }>
+                        <nav className={showNav? "fixed left-[-100%] w-[100%] h-[100%] ease-in-out duration-1000 z-40" : "bg-gray-700 border border-white fixed left-0 top-0 w-[100%] h-[100%] uppercase ease-in-out duration-1000 z-40  lg:hidden" }>
                             <ul className="flex flex-col space-y-12 mt-60 uppercase tracking-wider font-bold ">
                                 <li className="border-b border-white w-full text-center mx-auto pb-2"><Link onClick={menuHandler} className="cursor-pointer"  to="/help">Nápověda</Link></li>
                                 <li className="border-b border-white w-full text-center mx-auto pb-2"><Link onClick={menuHandler} className="cursor-pointer"  to="/movielist">Upravit seznam</Link></li>
@@ -90,7 +90,7 @@ const NavBar = () => {
                     </div>
 
                     {/* Mobilní MENU pro nepřihlášené */}
-                    <nav className={showNav? "fixed left-[-100%] w-[100%] h-[100%]  ease-in-out duration-1000 z-20" : "bg-black border border-white fixed left-0 top-0 w-[100%] h-[100%] uppercase ease-in-out  duration-1000 z-20  lg:hidden " }>
+                    <nav className={showNav? "fixed left-[-100%] w-[100%] h-[100%]   ease-in-out duration-1000 z-50" : "bg-gray-700 border border-white fixed left-0 top-0 w-[100%] h-[100%] uppercase ease-in-out  duration-1000 z-20  lg:hidden " }>
                         <ul className="flex flex-col space-y-12 mt-60 uppercase tracking-wider font-bold ">
                             <li className="border-b border-white w-full text-center mx-auto pb-2"><Link onClick={menuHandler} className="cursor-pointer"  to="/">Úvod</Link></li>
                             <li className="border-b border-white w-full text-center mx-auto pb-2"><Link onClick={menuHandler} className="cursor-pointer"  to="/help">Nápověda</Link></li>

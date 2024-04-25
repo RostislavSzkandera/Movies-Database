@@ -87,7 +87,8 @@ const { user, Modal, showModal, visible, scrollToTop } = MyContext()
 
   return (
     <div className="mb-20">
-      {visible && <button className="fixed right-[20px] bottom-[60px] z-40" onClick={scrollToTop}><FaArrowCircleUp className="text-[40px] text-gray-700" /></button> }
+      
+      {visible && <button className="fixed right-[10px] bottom-[40px]" onClick={scrollToTop}><FaArrowCircleUp className="text-[40px] text-gray-700" /></button> }
 
       { showModal && <ModalComponent text="Úspěšně přihlášeno" />}
 
