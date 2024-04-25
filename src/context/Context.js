@@ -25,6 +25,8 @@ export function AllContextProvider({children}) {
     
     const navigate = useNavigate()
     
+    const [visible, setVisible] = useState(false)
+    
    
 // Funkce pro otevírání a následné zavření notifikace
     const Modal = () => {
@@ -34,6 +36,30 @@ export function AllContextProvider({children}) {
         }, 5000)
     }
    
+// Funkce pro scroll na začátek stránky
+  const toggleVisible = () => { 
+    const scrolled = document.documentElement.scrollTop; 
+    if (scrolled > 300){ 
+      setVisible(true) 
+    }  
+    else if (scrolled <= 300){ 
+      setVisible(false) 
+    } 
+  }
+
+  const scrollToTop = () =>{ 
+    window.scrollTo({ 
+      top: 0,  
+      behavior: 'smooth'
+      
+    })
+  }
+    
+  useEffect( () => {
+    window.addEventListener('scroll', toggleVisible)
+    return () => window.removeEventListener("scroll", toggleVisible)
+  })
+  
 
 
 // Funkce pro přihlášení přes Google
@@ -88,7 +114,7 @@ export function AllContextProvider({children}) {
     })
 
     return (
-        <AllContext.Provider value={ {signUp, logIn, logOut, user, SignWithGoogle, resetPassword, showModal, setShowModal, Modal}}>
+        <AllContext.Provider value={ {signUp, logIn, logOut, user, SignWithGoogle, resetPassword, showModal, setShowModal, Modal, visible, scrollToTop}}>
             {children}
         </AllContext.Provider>
     )

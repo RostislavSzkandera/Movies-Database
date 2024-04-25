@@ -5,6 +5,7 @@ import { collection, onSnapshot } from "firebase/firestore"
 import ClipLoader from "react-spinners/ClipLoader";
 import { MyContext } from "../context/Context";
 import ModalComponent from "../components/ModalComponent"
+import {FaArrowCircleUp} from "react-icons/fa"
 
 const Home = () => {
   
@@ -13,7 +14,7 @@ const Home = () => {
   const [error, setError] = useState(false)
   
 // Destructuring context
-  const { Modal, showModal } = MyContext()
+  const { Modal, showModal, visible, scrollToTop } = MyContext()
 
 // Funkce pro načtení dat z databáze
   useEffect( () => {
@@ -60,12 +61,16 @@ const Home = () => {
   
 return (
     <div className="mb-20">
+       {visible && <button className="fixed right-[20px] bottom-[60px] z-40" onClick={scrollToTop}><FaArrowCircleUp className="text-[40px] text-gray-700" /></button> }
+      
+      
       {showModal && <ModalComponent text="Úspěšně odhlášeno" />}
       { error &&  <div className="text-xl text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                       <p className="mb-2" >V databázi nejsou žádné filmy, musíš nějaký přidat.</p>
                       <Link className="text-red-500 hover:underline" to="/login">Přihlásit se</Link>
                   </div>
       }
+      
      <div className=" flex flex-col flex-nowrap sm:flex sm:flex-row m-4 sm:flex-wrap ">
         { movies && movies.map( (oneMovie) => {
           const { title,  id, img } = oneMovie 

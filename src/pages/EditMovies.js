@@ -5,6 +5,7 @@ import { collection, onSnapshot, deleteDoc, doc } from "firebase/firestore"
 import { MyContext } from "../context/Context"
 import ClipLoader from "react-spinners/ClipLoader";
 import ModalComponent from "../components/ModalComponent"
+import {FaArrowCircleUp} from "react-icons/fa"
 
 
 
@@ -21,7 +22,7 @@ const EditMovies = () => {
 
 
 // Destructuring context
-const { user, Modal, showModal } = MyContext()
+const { user, Modal, showModal, visible, scrollToTop } = MyContext()
   
 // Funkce pro smazání filmu 
   const handleDelete = async (id) => {
@@ -86,8 +87,10 @@ const { user, Modal, showModal } = MyContext()
 
   return (
     <div className="mb-20">
-      
+      {visible && <button className="fixed right-[20px] bottom-[60px] z-40" onClick={scrollToTop}><FaArrowCircleUp className="text-[40px] text-gray-700" /></button> }
+
       { showModal && <ModalComponent text="Úspěšně přihlášeno" />}
+
       <form className="w-full text-center">
         <input 
           className="text-black w-[300px] p-1 my-2 rounded" 
