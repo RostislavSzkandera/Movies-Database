@@ -26,8 +26,8 @@ const ResetPasswordForm = ({ open , setOpen }) => {
     }
  
     return (
-    <div>
-        <form onSubmit={handleSubmit} className="text-black">
+    <div className="flex flex-col justify-center items-center">
+        <form onSubmit={handleSubmit} className="text-black flex flex-col justify-center items-center">
             <input 
                 className="p-1 mr-2" 
                 type="email" 
@@ -36,14 +36,14 @@ const ResetPasswordForm = ({ open , setOpen }) => {
                 value={email}  
             />
             <input 
-                className="bg-black p-1 text-white cursor-pointer mr-2" 
+                className="bg-black p-1 text-white cursor-pointer mt-1 rounded w-[80px]" 
                 type="submit" 
                 value="Odeslat" 
             />
             
         </form>
         <div className="mt-2 w-full  flex flex-row justify-center">
-        <button onClick={() => setOpen(!open)} className="w-[100px] text-center mx-auto bg-black p-1 text-white cursor-pointer">Zavřít</button>
+        <button onClick={() => setOpen(!open)} className="w-[100px] text-center mx-auto bg-black p-1 text-white cursor-pointer rounded">Zavřít</button>
         </div>
     </div>
   )

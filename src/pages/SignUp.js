@@ -66,7 +66,7 @@ const validateValues = (inputValues) => {
         <form  onSubmit={handleSubmit} className="flex flex-col justify-center items-center w-[300px]">
           
           {/* Validace formuláře, vypisování chyb */}
-              {error && <p className="text-red-500 text-center mb-2">{error}</p>}
+              {error && <p className="text-red-500 text-center mx-2 mb-2">{error}</p>}
               {errors.email ? (
               <p className="text-red-500 text-center mb-2">
                   {errors.email}
