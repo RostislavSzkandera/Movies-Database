@@ -18,18 +18,20 @@ const App = () => {
     <>
       <AllContextProvider>
         <NavBar />
-        <Routes>
-          <Route path="/" element={ <Home />} />
-          <Route path="/help" element={ <Help />} />
-          <Route path="/signup" element={ <SignUp />} />
-          <Route path="/login" element={ <Login />} />
-            <Route element={<PrivateLayouts />}>
-              <Route path="/movielist" element={ <EditMovies />} />
-              <Route path="/addmovie" element={ <AddMovie />} />
-            </Route>
-          <Route path="/movielist/:id" element={ <OneMovie />} />
-          <Route path="*" element={ <PageNotFound />} />
-        </Routes>
+        <div className="pt-16">
+          <Routes>
+            <Route path="/" element={ <Home />} />
+            <Route path="/help" element={ <Help />} />
+            <Route path="/signup" element={ <SignUp />} />
+            <Route path="/login" element={ <Login />} />
+              <Route element={<PrivateLayouts />}>
+                <Route path="/movielist" element={ <EditMovies />} />
+                <Route path="/addmovie" element={ <AddMovie />} />
+              </Route>
+            <Route path="/movielist/:id" element={ <OneMovie />} />
+            <Route path="*" element={ <PageNotFound />} />
+          </Routes>
+        </div>
         <Footer />
       </AllContextProvider>
     </>

@@ -36,11 +36,11 @@ const NavBar = () => {
         {
             user?.email ? 
             
-                (<div className="lg:flex lg:flex-row justify-between items-center">
+                (<div className="bg-black w-full h-16 fixed lg:flex lg:flex-row justify-between items-center">
                     <div className="flex flex-row justify-between w-full">
-                        <p className=" flex flex-col sm:flex-row text-xl ml-2 sm:mx-2 ">Přihlášen: <span className="text-yellow-400 mx-0 sm:mx-1">{user?.email}</span></p>
+                        <p className="flex flex-col lg:flex-row text-xl ml-2 sm:mx-2">Přihlášen: <span className="text-yellow-400 mx-0 sm:mx-1">{user?.email}</span></p>
 
-                        <div className="m-2 lg:hidden z-50">
+                        <div className="m-2 lg:hidden z-50 mt-4">
                             {showNav? <GiHamburgerMenu size={30} onClick={menuHandler} /> : <AiOutlineClose size={30} onClick={menuHandler} /> }
                         </div>
 
@@ -63,10 +63,10 @@ const NavBar = () => {
                         {/* PC MENU pro přihlášené  */}
                         <nav className="hidden lg:block">
                             <ul className="flex flex-row justify-center items-center">
-                                <li className="mt-2"><Link className="mr-4 p-2 font-bold  bg-red-700 rounded-xl hover:bg-red-600"  to="/help">Nápověda</Link></li>
-                                <li className="mt-2"><Link className="mr-4 p-2 font-bold  bg-red-700 rounded-xl hover:bg-red-600"  to="/movielist">Upravit seznam</Link></li>
-                                <li className="mt-2"><Link className="mr-4 p-2 font-bold bg-red-700 rounded-xl hover:bg-red-600" to="/addmovie">Přidání filmu</Link></li>
-                                <li className="mt-2"><button className="mr-4 p-2 font-bold bg-red-700 rounded-xl hover:bg-red-600" to="/signout" onClick={ () => {
+                                <li className="mt-1"><Link className="mr-4 p-2 font-bold  bg-red-700 rounded-xl hover:bg-red-600"  to="/help">Nápověda</Link></li>
+                                <li className="mt-1"><Link className="mr-4 p-2 font-bold  bg-red-700 rounded-xl hover:bg-red-600"  to="/movielist">Upravit seznam</Link></li>
+                                <li className="mt-1"><Link className="mr-4 p-2 font-bold bg-red-700 rounded-xl hover:bg-red-600" to="/addmovie">Přidání filmu</Link></li>
+                                <li className="mt-1"><button className="mr-4 p-2 font-bold bg-red-700 rounded-xl hover:bg-red-600" to="/signout" onClick={ () => {
                                     logout()
                                     Modal()
                                     navigate("/")
@@ -78,7 +78,7 @@ const NavBar = () => {
                 </div> ) : 
                 
                 (
-                <div className="flex flex-row justify-between ">
+                <div className="w-full h-12 bg-black fixed flex flex-row justify-between">
                     
                     <div>
                         <p className="mt-2 ml-2 text-xl text-red-500">Nejsi přihlášen</p>
@@ -100,7 +100,7 @@ const NavBar = () => {
                     </nav>
 
                     {/* PC MENU pro nepřihlášené  */}
-                    <nav className="hidden lg:block mt-4">
+                    <nav className="hidden lg:block mt-[12px]">
                         <ul className="flex flex-row">
                             <li><Link className="mr-4 mt-2  p-2 font-bold bg-red-700 rounded-xl hover:bg-red-600"  to="/">Úvod</Link></li>
                             <li><Link className="mr-4 mt-2 p-2 font-bold  bg-red-700 rounded-xl hover:bg-red-600"  to="/help">Nápověda</Link></li>
