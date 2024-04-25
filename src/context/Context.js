@@ -58,7 +58,7 @@ export function AllContextProvider({children}) {
   useEffect( () => {
     window.addEventListener('scroll', toggleVisible)
     return () => window.removeEventListener("scroll", toggleVisible)
-  })
+  }, [])
   
 
 
