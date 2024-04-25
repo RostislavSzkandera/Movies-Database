@@ -151,7 +151,6 @@ const validateValues = (inputValues) => {
             value={title}
             required
             name="title"
-            autoFocus
             autoComplete="off"
             maxLength={40}
             

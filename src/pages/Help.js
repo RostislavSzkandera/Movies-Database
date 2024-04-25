@@ -2,8 +2,8 @@
 
 const Help = () => {
   return (
-    <section className="flex flex-col pt-40 justify-center items-center">
-        <div className="flex flex-col text-center w-[400px]">
+    <section className="flex flex-col pt-8 sm:pt-40 justify-center items-center">
+        <div className="flex flex-col text-center mx-2 w-[300px] sm:w-[400px]">
           <h2 className="text-3xl mb-8">Nápověda</h2>
           <p className="mb-8">Toto je projekt do mého portfolia. Jedná se o databázi filmů. Využívanými technologiemi jsou: React, Tailwind,
             Firebase.

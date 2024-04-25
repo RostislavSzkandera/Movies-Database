@@ -38,7 +38,7 @@ const NavBar = () => {
             
                 (<div className="lg:flex lg:flex-row justify-between items-center">
                     <div className="flex flex-row justify-between w-full">
-                        <p className="flex flex-col sm:flex-row text-xl sm:mx-2 mx-2">Přihlášen: <span className="text-yellow-400 mx-0 sm:mx-1">{user?.email}</span></p>
+                        <p className=" flex flex-col sm:flex-row text-xl ml-2 sm:mx-2 ">Přihlášen: <span className="text-yellow-400 mx-0 sm:mx-1">{user?.email}</span></p>
 
                         <div className="m-2 lg:hidden z-50">
                             {showNav? <GiHamburgerMenu size={30} onClick={menuHandler} /> : <AiOutlineClose size={30} onClick={menuHandler} /> }
@@ -47,7 +47,7 @@ const NavBar = () => {
                         {/* Mobilní MENU pro přihlášené */}
 
                         <nav className={showNav? "fixed left-[-100%] w-[100%] h-[100%] ease-in-out duration-1000 z-20" : "bg-black border border-white fixed left-0 top-0 w-[100%] h-[100%] uppercase ease-in-out duration-1000 z-20  lg:hidden" }>
-                            <ul className="flex flex-col space-y-12 mt-80 uppercase tracking-wider font-bold ">
+                            <ul className="flex flex-col space-y-12 mt-60 uppercase tracking-wider font-bold ">
                                 <li className="border-b border-white w-full text-center mx-auto pb-2"><Link onClick={menuHandler} className="cursor-pointer"  to="/help">Nápověda</Link></li>
                                 <li className="border-b border-white w-full text-center mx-auto pb-2"><Link onClick={menuHandler} className="cursor-pointer"  to="/movielist">Upravit seznam</Link></li>
                                 <li className="border-b border-white w-full text-center mx-auto pb-2"><Link onClick={menuHandler} className="cursor-pointer"  to="/addmovie">Přidání filmu</Link></li>
@@ -91,7 +91,7 @@ const NavBar = () => {
 
                     {/* Mobilní MENU pro nepřihlášené */}
                     <nav className={showNav? "fixed left-[-100%] w-[100%] h-[100%]  ease-in-out duration-1000 z-20" : "bg-black border border-white fixed left-0 top-0 w-[100%] h-[100%] uppercase ease-in-out  duration-1000 z-20  lg:hidden " }>
-                        <ul className="flex flex-col space-y-12 mt-80 uppercase tracking-wider font-bold ">
+                        <ul className="flex flex-col space-y-12 mt-60 uppercase tracking-wider font-bold ">
                             <li className="border-b border-white w-full text-center mx-auto pb-2"><Link onClick={menuHandler} className="cursor-pointer"  to="/">Úvod</Link></li>
                             <li className="border-b border-white w-full text-center mx-auto pb-2"><Link onClick={menuHandler} className="cursor-pointer"  to="/help">Nápověda</Link></li>
                             <li className="border-b border-white w-full text-center mx-auto pb-2"><Link onClick={menuHandler} className="cursor-pointer"  to="/login">Přihlášení</Link></li>
