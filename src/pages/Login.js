@@ -17,7 +17,7 @@ const Login = () => {
   const [errors, setErrors] = useState({});
   
   // Destructuring context
-  const  { logIn , user, SignWithGoogle, Modal, googleError, loading }  = MyContext()
+  const  { logIn , user, SignWithGoogle, Modal, googleError, setGoogleError, loading }  = MyContext()
   
   // Použití useNavigate
   const navigate = useNavigate()
@@ -35,6 +35,7 @@ const Login = () => {
 const handleSubmit = async (e) => {
       e.preventDefault()
       setError("")
+      setGoogleError(false)
       try {
         setErrors(validateValues(email, password));
         await logIn(email, password)

@@ -40,7 +40,7 @@ const NavBar = () => {
                     <div className="flex flex-row justify-between w-full">
                         <p className="flex flex-col lg:flex-row text-xl ml-2 sm:mx-2">Přihlášen: <span className="text-yellow-400 mx-0 sm:mx-1">{user?.email}</span></p>
 
-                        <div className="m-2 lg:hidden z-50 mt-4">
+                        <div className="lg:hidden z-50 m-2">
                             {showNav? <GiHamburgerMenu size={30} onClick={menuHandler} /> : <AiOutlineClose size={30} onClick={menuHandler} /> }
                         </div>
 
@@ -85,7 +85,7 @@ const NavBar = () => {
                     </div>
                     
 
-                    <div className="mr-4 lg:hidden z-50 mt-2  ">
+                    <div className="lg:hidden z-50 m-2">
                         {showNav? <GiHamburgerMenu size={30} onClick={menuHandler} /> : <AiOutlineClose size={30} onClick={menuHandler} /> }
                     </div>
 
