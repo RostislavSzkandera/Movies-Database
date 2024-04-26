@@ -81,8 +81,6 @@ export function AllContextProvider({children}) {
         navigate("/movielist")
     }).catch((error) => {
         // Handle Errors here.
-        setGoogleError(true)
-        
         const errorCode = error.code;
         const errorMessage = error.message;
         
@@ -92,6 +90,11 @@ export function AllContextProvider({children}) {
         const credential = GoogleAuthProvider.credentialFromError(error);
         // ...
         setLoading(false)
+        setGoogleError(true)
+        setTimeout( () => {
+            window.location.reload();
+        }, 2000)
+         
       });
   }
 
@@ -132,7 +135,7 @@ export function AllContextProvider({children}) {
     })
 
     return (
-        <AllContext.Provider value={ {signUp, logIn, logOut, user, SignWithGoogle, resetPassword, showModal, setShowModal, Modal, visible, scrollToTop, googleError, loading  }}>
+        <AllContext.Provider value={ {signUp, logIn, logOut, user, SignWithGoogle, resetPassword, showModal, setShowModal, Modal, visible, scrollToTop, googleError, loading, setGoogleError  }}>
             {children}
         </AllContext.Provider>
     )

@@ -13,6 +13,7 @@ import Footer from "./components/Footer"
 import PageNotFound from "./pages/PageNotFound"
 import PrivateLayouts from "./layouts/PrivateLayouts"
 
+
 const App = () => {
   return (
     <>
@@ -24,10 +25,16 @@ const App = () => {
             <Route path="/help" element={ <Help />} />
             <Route path="/signup" element={ <SignUp />} />
             <Route path="/login" element={ <Login />} />
-              <Route element={<PrivateLayouts />}>
-                <Route path="/movielist" element={ <EditMovies />} />
-                <Route path="/addmovie" element={ <AddMovie />} />
-              </Route>
+            <Route path="/movielist" element={
+                            <PrivateLayouts>
+                              <EditMovies />
+                            </PrivateLayouts>} 
+            />
+              <Route path="/addmovie" element={
+                                <PrivateLayouts>
+                                  <AddMovie />
+                                </PrivateLayouts>} 
+            />
             <Route path="/movielist/:id" element={ <OneMovie />} />
             <Route path="*" element={ <PageNotFound />} />
           </Routes>

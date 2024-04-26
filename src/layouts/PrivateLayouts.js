@@ -1,18 +1,16 @@
-import { Outlet, useLocation, Navigate } from "react-router-dom"
-import { auth } from "../firebase/config"
+import React from "react";
+import { Navigate } from "react-router-dom"
+import { MyContext } from "../context/Context";
 
-const PrivateLayouts = () => {
-    const location = useLocation()
-  
-    
-    return auth.currentUser ? ( 
-    <Outlet />  ) :  (
-        <Navigate to="/login" state={{from: location}}
-            replace />
-    )
-    
+const PrivateLayouts = ( {children} )  => {
+    const { user } = MyContext()
 
-  
+    if(!user) {
+        return <Navigate to="/login" />
+
+    } else {
+        return children
+    }
 }
 
 export default PrivateLayouts
