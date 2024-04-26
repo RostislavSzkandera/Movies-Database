@@ -71,11 +71,11 @@ return (
                   </div>
       }
 
-     <div className=" flex flex-col flex-nowrap sm:flex sm:flex-row m-4 sm:flex-wrap ">
+     <div className="flex flex-col flex-nowrap sm:flex sm:flex-row mx-auto sm:flex-wrap sm:justify-center ">
         { movies && movies.map( (oneMovie) => {
           const { title,  id, img } = oneMovie 
           
-          return <div className="mx-auto my-2  flex flex-col justify-center items-center border-2 border-red-600 w-[290px] sm:m-2 shadow-md shadow-red-600" key={id}>
+          return <div className="flex flex-col justify-center items-center border-2 my-2 mx-auto border-red-600 w-[290px] sm:m-2 shadow-md shadow-red-600" key={id}>
             <h2 className="flex flex-row justify-center items-center h-12 text-xl text-center m-1 text-white ">{title}</h2>
             <img className="w-[180px] h-[180px] my-1" src={img} alt="" />
           </div>

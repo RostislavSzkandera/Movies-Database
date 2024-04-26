@@ -108,12 +108,12 @@ const { user, Modal, showModal, visible, scrollToTop } = MyContext()
       { deleteNotif && <div className="w-[300px] sm:w-[500px] h-[200px] flex flex-col justify-center items-center text-center absolute m-auto top-0 bottom-0 right-0 left-0 bg-red-500 p-2 "><h2 className="text-2xl">Nemáte oprávnění mazat filmy, které jste nepřidali Vy!</h2>
       <button onClick={ () => setDeleteNotif(false)}  className="bg-black p-2 mt-4 rounded">Ok</button></div>}
       
-      <div className="flex flex-col flex-nowrap sm:flex sm:flex-row m-4 sm:flex-wrap">
+      <div className="flex flex-col flex-nowrap sm:flex sm:flex-row mx-auto sm:flex-wrap sm:justify-center ">
         { movies && movies.filter((movie) => {
           return search.toLowerCase() === "" ? movie : movie.title.toLowerCase().includes(search.toLowerCase())
         }).map( (oneMovie) => {
           const {title,  id,  img} = oneMovie 
-            return <div className="flex flex-col justify-center items-center border-2 border-red-600 w-[290px] mx-auto my-2 sm:m-2 shadow-md shadow-red-600" key={id}>
+            return <div className="flex flex-col justify-center items-center border-2 my-2 mx-auto border-red-600 w-[290px] sm:m-2 shadow-md shadow-red-600" key={id}>
                       <h2 className="flex flex-row justify-center items-center h-12 text-xl text-center m-1 text-white ">{title}</h2>
                       <img className="w-[180px] h-[180px]  " src={img} alt="" />
                       <div className="flex flex-row space-x-2 ">
