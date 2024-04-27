@@ -60,7 +60,7 @@ const validateValues = (inputValues) => {
 
   return (
     
-    <div className="w-full h-[700px] flex flex-col justify-center items-center sm:pt-20">
+    <div className="w-full h-[700px] flex flex-col  items-center pt-20">
       <div className="w-[300px] sm:w-[500px] h-[500px] flex flex-col justify-center items-center bg-gray-800">
         <h2 className="text-2xl mb-4">Registrace</h2>
         <form  onSubmit={handleSubmit} className="flex flex-col justify-center items-center w-[300px]">

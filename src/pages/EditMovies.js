@@ -20,9 +20,7 @@ const EditMovies = () => {
 
 // UseState pro filtr filmů
   const [genreFilter, setGenreFilter] = useState("")
-  const [search, setSearch] = useState("")
   
-
 
 // Destructuring context
 const { user, Modal, showModal, visible, scrollToTop } = MyContext()
