@@ -5,11 +5,11 @@ const Help = () => {
     <section className="flex flex-col pt-8  justify-center items-center">
         <div className="flex flex-col text-center mx-2 w-[300px] sm:w-[400px]">
           <h2 className="text-3xl mb-8">Nápověda</h2>
-          <p className="mb-8">Toto je projekt do mého portfolia. Jedná se o databázi filmů. Využívanými technologiemi jsou: React, Tailwind,
+          <p className="mb-4">Toto je projekt do mého portfolia. Jedná se o databázi filmů. Využívanými technologiemi jsou: React, Tailwind,
             Firebase.
           </p>
           <h2 className="text-red-500 text-xl mb-2">Pro nepřihlášené</h2>
-          <p className="mb-8">Pokud nejste přihlášení, můžete si na úvodní straně prohlédnout, 
+          <p className="mb-4">Pokud nejste přihlášení, můžete si na úvodní straně prohlédnout, 
             jaké filmy v databázi jsou. Můžete se registrovat a přihlásit pomocí emailu a hesla,
             a nebo pomocí Google.
           </p>
@@ -18,6 +18,7 @@ const Help = () => {
             otevřít detailnější informace o filmu. Můžete přidat nový film,
             můžete smazat film, který jste přidali vy. Film, který jste přidali vy,
             je v detailním popisu žlutý a film, který přidal někdo jiný je červený.
+            Také můžete okomentovat každý film.
           </p>
     </div>
     </section>

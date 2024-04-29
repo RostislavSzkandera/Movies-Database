@@ -54,6 +54,9 @@ const AddMovie = () => {
           ...data,
           addedBy: user?.email,
           userid: auth?.currentUser?.uid,
+          comments: [],
+          commentedBy: [],
+          commentedAt: [],
           timestamp: serverTimestamp(),
       }).catch (err => {
         console.log(err)

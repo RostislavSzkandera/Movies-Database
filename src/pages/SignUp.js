@@ -78,7 +78,7 @@ const validateValues = (inputValues) => {
               </p>
             ) : null}
           
-          <label htmlFor="name">Jméno</label>
+          <label htmlFor="name">Email</label>
           <input 
             autoComplete="off" 
             id="name" 
