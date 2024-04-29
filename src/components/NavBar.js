@@ -81,7 +81,7 @@ const NavBar = () => {
                 <div className="w-full h-12 bg-black fixed flex flex-row justify-between">
                     
                     <div>
-                        <p className="mt-2 ml-2 text-xl text-red-500">Nejsi přihlášen</p>
+                        <Link to="/login" className="mt-2 ml-2 text-xl text-red-500">Nejsi přihlášen</Link>
                     </div>
                     
 
