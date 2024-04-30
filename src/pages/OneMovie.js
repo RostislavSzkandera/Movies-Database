@@ -10,7 +10,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 
 const OneMovie = () => {
 // Použití useParams pro id konkrétního filmu
-  const { id } = useParams()
+    const { id } = useParams()
     
     const [ movies, setMovies ] = useState([])
     const [loading, setLoading] = useState(false)
@@ -82,7 +82,20 @@ const OneMovie = () => {
       }
      
   }
+// Funkce pro zobrazení komentářů
+  const displayComments = () => {
+    const scrollToBottom = () =>{ 
+      window.scrollTo({ 
+        top: 1000,  
+        behavior: 'smooth'   
+      })
+    }
+    setTimeout( () => {
+      scrollToBottom()
+    })
+    setShowComments(true)
 
+  }
 
     
 if(loading) {
@@ -116,7 +129,7 @@ if(loading) {
                       </div>
                     </div>
         }
-        <div><button onClick={() => setShowComments(!showComments)} className="bg-red-600 sm:hover:bg-red-500 p-2 mt-4 rounded cursor-pointer ">Zobrazit komentáře</button></div>
+        <div><button onClick={displayComments} className="bg-red-600 sm:hover:bg-red-500 p-2 mt-4 rounded cursor-pointer ">Zobrazit komentáře</button></div>
       {
         showComments && 
         <div className="w-[90%] sm:w-[50%] pb-20">
