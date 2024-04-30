@@ -31,7 +31,9 @@ const AddMovie = () => {
   // useState pro přidání obrázku
     const [file, setFile] = useState(null)
     const [progress, setProgress] = useState(null)
-  
+    const [imagePreviewUrl, setImagePreviewUrl] = useState(null);
+    
+
   // Použití useNavigate
     const navigate = useNavigate()
     
@@ -85,6 +87,13 @@ const AddMovie = () => {
                     break
                 case "running":
                     console.log("Upload is Running")
+                    const reader = new FileReader();
+                    reader.onloadend = () => {
+                      setImagePreviewUrl(reader.result);
+                    };
+                    if (file) {
+                      reader.readAsDataURL(file);
+                    }
                     break
                 default:
                     break
@@ -119,32 +128,39 @@ const validateValues = (inputValues) => {
   return errors;
 };
 
-  
+
   return (
     
     <div className="pb-40">
           <h2 className="text-center text-2xl pt-8 sm:pt-12">Přidání filmu</h2>
       <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center pt-8 ">
-              {/* Validace, vypisování chyb */}
-              {errors.year ? (
-              <p className="text-red-500 text-center mb-2">
-                  {errors.year}
-              </p>
-              ) : null}
-              {errors.time ? (
-                <p className="text-red-500 text-center mb-2">
-                    {errors.time}
-                </p>
-              ) : null}
-            
           
-          <label htmlFor="photo">Vložte obrázek</label>
-          <input 
-            id="photo"
-            type="file"
-            onChange={ (e) => setFile(e.target.files[0])} 
-            className="bg-white text-black w-[300px] sm:w-[500px] mb-4 p-2 placeholder:text-black mt-2"
-            required
+        {/* Náhled obrázku */}
+        {imagePreviewUrl && (
+          <div className="w-[250px] h-[270px] border-2 border-red-500 flex flex-col justify-center items-center my-1">
+            <img className="w-[200px] max-h-[250px]" src={imagePreviewUrl} alt="Preview"  />
+          </div>
+        )}
+        
+        {/* Validace, vypisování chyb */}
+        {errors.year ? (
+        <p className="text-red-500 text-center mb-2">
+            {errors.year}
+        </p>
+        ) : null}
+        {errors.time ? (
+          <p className="text-red-500 text-center mb-2">
+              {errors.time}
+          </p>
+        ) : null}
+
+        {!imagePreviewUrl && <label htmlFor="photo">Vložte obrázek</label>}
+        <input 
+          id="photo"
+          type="file"
+          onChange={ (e) => setFile(e.target.files[0])}
+          className="bg-white text-black w-[300px] sm:w-[500px] mb-4 p-2 placeholder:text-black mt-2"
+          required
         />
         <input 
             type="text" 

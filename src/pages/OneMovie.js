@@ -117,7 +117,7 @@ if(loading) {
           {
           movies && <div className={movies.addedBy === user?.email ? "bg-yellow-500 flex flex-col justify-center items-center min-h-[500px] w-[350px] sm:w-[500px]" : "bg-red-500  flex flex-col justify-center items-center  w-[350px] sm:w-[500px]"}>
                       <h2 className="text-center text-2xl m-2">{movies.title}</h2>
-                      <img className="w-[200px] mb-1" src={movies.img} alt="" />
+                      <img className="w-[200px] max-h-[250px] mb-1" src={movies.img} alt="" />
                       <p className="mx-2 mb-2 text-center">Hlavní herci: {movies.actors}</p>
                       <p className="mb-2">Rok natočení: {movies.year}</p>
                       <p className="mb-2">Žánr: {movies.genre}</p>
