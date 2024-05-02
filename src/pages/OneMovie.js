@@ -48,7 +48,7 @@ const OneMovie = () => {
     setLoading(true)
     const unsubscribe = onSnapshot(coinRef, (document) => {
         if(document.exists) {   
-            console.log(document.data())
+            // console.log(document.data())
               setMovies(document.data())
 
         }
@@ -156,7 +156,7 @@ if(loading) {
           
             {
               movies &&  <div className="flex flex-col">
-                {movies.comments.length === 0 ? <p className="text-center">Tento film ještě nikdo neokomentoval. Buď první!</p> : null }
+                {movies.comments.length === 0 ? <p className="text-center">Tento film ještě nikdo neokomentoval</p> : null }
               {
                 movies.comments && movies.comments.map( (comment, index) => {
                   return <div className="border-2 border-red-600 rounded p-2 my-1" key={index}>

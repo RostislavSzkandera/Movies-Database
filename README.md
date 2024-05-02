@@ -2,6 +2,7 @@ Databáze filmů
 Toto je projekt do mého portfolia. Jedná se o databázi filmů.
 Když se přihlásíte můžete přidávat nové filmy, mazat filmy kterého jste autorem. A také přidávat komentáře.
 Použité technologie: React, tailwind, firebase.
+Nastavení firebase se nacházi v "/firebase/config.js"
 
 Funkční webová stránka lze spustit na
 www.szkandera-portfolio.cz
